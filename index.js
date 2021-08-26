@@ -24,6 +24,10 @@ app.get("/students", async (req, res) => {
     const students = await Student.find()
     res.send(students)
 })
+app.get("/students/:id", async (req, res) => {   
+    const student = await Student.findById(req.params.id)
+    res.send(student)
+})
 app.put("/students/:id", async (req, res) => {   
     const updatedStudent = await Student.findByIdAndUpdate(req.params.id, req.body, {new: true})
     res.send(updatedStudent)

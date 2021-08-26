@@ -3,6 +3,7 @@ dotenv.config()
 
 import mongoose from "mongoose"
 import express from "express"
+import bodyParser from 'body-parser'
 
 // models/Student.js
 const StudentSchema = new mongoose.Schema({
@@ -13,12 +14,19 @@ const StudentSchema = new mongoose.Schema({
 const Student = mongoose.model("Student", StudentSchema)
 
 const app = express()
-app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(express.json()); 
+
+app.get("/", (req, res) => {
+    res.sendFile(process.cwd() + "/index.html")
+})
 
 // routes/students.js
-app.post("/students", async (req, res) => {    
+app.post("/students", async (req, res) => {
+    console.log("POST recieved", req.body)
     const student = await Student.create(req.body)
-    res.send(student)
+    res.status("200")
+    res.end()
 })
 app.get("/students", async (req, res) => {    
     const students = await Student.find()

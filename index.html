@@ -22,7 +22,7 @@
                 var form = document.querySelector('form');
                 var data = new FormData(form);
                 
-                <!-- THIS IS HOW WE TYPICALLY SEND DATA TO SERVERS NOW -->
+                // THIS IS HOW WE TYPICALLY SEND DATA TO SERVERS NOW
                 fetch('/students', {
                     method: 'POST',
                     body: JSON.stringify({

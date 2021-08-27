@@ -11,6 +11,7 @@
             <input type="text" name="name" placeholder="name">
             <input type="text" name="first_name" placeholder="first_name">
             <input type="text" name="email" placeholder="email">
+            <!-- THIS IS HOW WEB PAGES WOULD SEND DATA BEFORE JAVASCRIPT EXISTED -->
             <input type="submit" value="oldskool submit">
         </form>
         <button onclick="sendWithJSONinstead()">js submit</button>   
@@ -20,7 +21,8 @@
 
                 var form = document.querySelector('form');
                 var data = new FormData(form);
-
+                
+                <!-- THIS IS HOW WE TYPICALLY SEND DATA TO SERVERS NOW -->
                 fetch('/students', {
                     method: 'POST',
                     body: JSON.stringify({
